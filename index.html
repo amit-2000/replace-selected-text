@@ -17,8 +17,6 @@
     <script>
         function makeBoldSelection() {
             var selectedText = document.getSelection()
-            var range = selectedText.getRangeAt(0);
-            // console.log(range)
             const size = selectedText.toString()
             console.log(size.length)
             const replacementString = "_".repeat(size.length)
