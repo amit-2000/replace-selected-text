@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum eum deserunt, eligendi unde quis possimus
+        aliquid maiores cumque quia consectetur voluptas. Eum magnam sunt aliquid similique consectetur laboriosam!
+        Doloribus reprehenderit quia harum quisquam nemo dicta aspernatur nisi consectetur. Quas fugit voluptatem optio
+        est vitae inventore consequatur consectetur magni dolorem nobis.</p>
+    <input type="button" value="Make Bold" onClick="makeBoldSelection();">
+    <script>
+        function makeBoldSelection() {
+            var selectedText = document.getSelection()
+            var range = selectedText.getRangeAt(0);
+            // console.log(range)
+            const size = selectedText.toString()
+            console.log(size.length)
+            const replacementString = "_".repeat(size.length)
+            var span = '<span >' + replacementString + " " + '</span>';
+            document.body.innerHTML = document.body.innerHTML.replace(window.getSelection(), span);
+        }
+    </script>
+</body>
+
+</html>
