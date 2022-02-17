@@ -15,13 +15,24 @@
         est vitae inventore consequatur consectetur magni dolorem nobis.</p>
     <input type="button" value="Replace Selected Text" onClick="makeBoldSelection();">
     <script>
+        function updateValue() {
+            let x = document.getElementById(`${uniqueId}`).value;
+            console.log("handle input change " + uniqueId)
+            console.log(x.length)
+        }
+        var uniqueId;
         function makeBoldSelection() {
-            var selectedText = document.getSelection()
-            const size = selectedText.toString()
-            console.log(size.length)
-            const replacementString = "_".repeat(size.length)
-            var span = '<span >' + replacementString + " " + '</span>';
-            document.body.innerHTML = document.body.innerHTML.replace(window.getSelection(), span);
+            // var selectedText = document.getSelection()
+            // const text = selectedText.toString()
+            // console.log(text.length)
+            // const replacementString = "_".repeat(text.length)
+            uniqueId = Date.now()
+            console.log("unique id in id : ", uniqueId)
+            const inputElement = `<input id= ${uniqueId}  oninput="updateValue()" ></input>`
+            document.body.innerHTML = document.body.innerHTML.replace(window.getSelection(), inputElement);
+            const input = document.querySelector('input');
+            input.addEventListener('input', updateValue);
+
         }
     </script>
 </body>
