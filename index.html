@@ -13,28 +13,39 @@
         aliquid maiores cumque quia consectetur voluptas. Eum magnam sunt aliquid similique consectetur laboriosam!
         Doloribus reprehenderit quia harum quisquam nemo dicta aspernatur nisi consectetur. Quas fugit voluptatem optio
         est vitae inventore consequatur consectetur magni dolorem nobis.</p>
-    <input type="button" value="Replace Selected Text" onClick="makeBoldSelection();">
+    <input type="button" value="Replace Selected Text" onClick="makeBoldSelection()">
+    <input type="button" value="get input" onClick="handleInputEvent()">
     <script>
-        function updateValue() {
-            let x = document.getElementById(`${uniqueId}`).value;
-            console.log("handle input change " + uniqueId)
-            console.log(x.length)
+        // function updateValue(uniqueId) {
+        //     let x = document.getElementById(`${uniqueId}`).value;
+        //     console.log("handle input change " + uniqueId)
+        //     console.log(x.length)
+        // }
+        function handleInputEvent(id) {
+            // console.log("input button handle")
+            const input = document.getElementById(id).value;
+            console.log(input)
         }
-        var uniqueId;
+        let uniqueId;
         function makeBoldSelection() {
-            // var selectedText = document.getSelection()
-            // const text = selectedText.toString()
-            // console.log(text.length)
-            // const replacementString = "_".repeat(text.length)
-            uniqueId = Date.now()
-            console.log("unique id in id : ", uniqueId)
-            const inputElement = `<input id= ${uniqueId}  oninput="updateValue()" ></input>`
-            document.body.innerHTML = document.body.innerHTML.replace(window.getSelection(), inputElement);
-            const input = document.querySelector('input');
-            input.addEventListener('input', updateValue);
-
+            const text = document.getSelection().toString().length
+            if (document.getSelection()) {
+                uniqueId = Date.now().toString()
+                console.log("unique id in id : ", uniqueId)
+                const inputElement = `<input id=${uniqueId} ></input>`
+                document.body.innerHTML = document.body.innerHTML.replace(window.getSelection(), inputElement);
+                const input = document.getElementById(uniqueId);
+                input.addEventListener('input', handleInputEvent.bind(undefined, uniqueId));
+            }
         }
     </script>
 </body>
 
 </html>
+
+
+
+<!-- // var selectedText = document.getSelection()
+            // const text = selectedText.toString()
+            // console.log(text.length)
+            // const replacementString = "_".repeat(text.length) -->
